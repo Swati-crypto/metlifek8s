@@ -1,10 +1,11 @@
-apiVersion: v1
-kind: ResourceQuota
-metadata:
-    name: mem-cpu-example
-spec:
-    hard:
-        requests.cpu: "1"
-        requests.memory: 1Gi
-        limits.cpu: "2"
-        limits.memory: 2Gi
+to execut this script we will always use a command(kubectl create -f quota.yaml --namespace=namespace)
+apiVersion: v1 any k8s script start with the apiVersion
+kind: ResourceQuota -kind will tell k8s which api should it invoke
+metadata: -it is creating a resource
+    name: mem-cpu-example - the name os the resource ResourceQuota
+spec: -here we are defining specification about ResourceQuota
+    hard: #every container must have memory request memory limit cpu request and cpu limit
+        requests.cpu: "1" #the request cpu for one pod should not cross more than 1core processor
+        requests.memory: 1Gi #the request mem for one pod should not crosss more than 1gb of ram
+        limits.cpu: "2" # the maximum limit more than 2 core processor 
+        limits.memory: 2Gi or 2gb of ram
